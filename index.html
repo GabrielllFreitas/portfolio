@@ -66,7 +66,7 @@
     color: var(--chrome-dim); text-decoration: none; transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--chrome-lt); }
-
+ 
   .hero {
     min-height: 100vh; display: flex; flex-direction: column;
     justify-content: flex-end; padding: 0 60px 80px; position: relative; overflow: hidden;
@@ -111,7 +111,7 @@
     background: linear-gradient(to bottom, var(--chrome-dim), transparent);
     animation: scrollPulse 2s ease-in-out infinite;
   }
-
+ 
   /* DRIVE BAND */
   .drive-band {
     background: var(--black-2);
@@ -145,7 +145,7 @@
     padding-left: 36px;
   }
   .drive-band-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
-
+ 
   section { padding: 120px 60px; position: relative; }
   .section-inner { max-width: 1100px; margin: 0 auto; }
   .section-eyebrow {
@@ -161,7 +161,39 @@
     font-size: clamp(36px, 5vw, 64px);
     color: var(--white); line-height: 1.1; margin-bottom: 60px;
   }
-
+ 
+  /* MENTALIDADE */
+  #mentalidade { background: var(--black); border-top: 1px solid var(--black-3); }
+  .filo-lead {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(22px, 3vw, 34px);
+    color: var(--white); line-height: 1.4; font-style: italic;
+    max-width: 820px; margin-bottom: 72px;
+  }
+  .filo-lead span { color: var(--chrome); }
+  .filo-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+  }
+  .filo-card {
+    background: var(--black-2); padding: 48px 40px;
+    border-left: 2px solid transparent;
+    transition: background 0.25s, border-color 0.25s;
+    opacity: 0; transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease, background 0.25s, border-color 0.25s;
+  }
+  .filo-card.visible { opacity: 1; transform: none; }
+  .filo-card:hover { background: var(--black-3); border-left-color: var(--chrome-dim); }
+  .filo-card-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px; letter-spacing: 2px; color: var(--chrome-dim); margin-bottom: 20px;
+  }
+  .filo-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 24px; color: var(--white); margin-bottom: 16px; font-style: italic;
+  }
+  .filo-card p { font-size: 14px; color: var(--chrome-dim); line-height: 1.85; }
+  .filo-card p + p { margin-top: 12px; }
+ 
   #trajetoria { background: var(--black-2); border-top: 1px solid var(--black-3); }
   .traj-grid { display: grid; grid-template-columns: 280px 1fr; gap: 80px; align-items: start; }
   .traj-sidebar { position: sticky; top: 120px; }
@@ -189,9 +221,31 @@
   }
   .traj-content p { font-size: 14px; color: var(--chrome-dim); line-height: 1.85; }
   .traj-content p + p { margin-top: 12px; }
-
+ 
+  /* MENTORIAS */
+  #mentorias { background: var(--black); border-top: 1px solid var(--black-3); }
+  .mentoria-intro { font-size: 14px; color: var(--chrome-dim); margin-bottom: 48px; max-width: 560px; }
+  .mentorias-list { display: flex; flex-direction: column; gap: 2px; }
+  .mentoria-item {
+    display: grid; grid-template-columns: 40px 1fr auto;
+    gap: 32px; align-items: center; padding: 32px;
+    background: var(--black-2);
+    opacity: 0; transform: translateX(-16px);
+    transition: opacity 0.5s ease, transform 0.5s ease, background 0.2s;
+  }
+  .mentoria-item.visible { opacity: 1; transform: none; }
+  .mentoria-item:hover { background: var(--black-3); }
+  .mentoria-num { font-family: 'Bebas Neue', sans-serif; font-size: 12px; letter-spacing: 2px; color: var(--chrome-dim); }
+  .mentoria-info {}
+  .mentoria-name { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--white); font-style: italic; margin-bottom: 4px; }
+  .mentoria-by { font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--chrome-dim); }
+  .mentoria-tag {
+    font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--chrome-dim); border: 1px solid var(--black-3); padding: 5px 12px; white-space: nowrap;
+  }
+  .mentoria-tag.hl { color: var(--chrome); border-color: var(--chrome-dim); }
+ 
   #numeros { background: var(--black); border-top: 1px solid var(--black-3); }
-  .numbers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-bottom: 60px; }
   .number-card {
     background: var(--black-2); padding: 48px 32px; position: relative; overflow: hidden;
     opacity: 0; transform: translateY(16px);
@@ -217,13 +271,13 @@
     font-size: 12px; color: var(--chrome-dim);
     border-left: 2px solid var(--black-3); padding-left: 20px; line-height: 1.8; font-style: italic;
   }
-
+ 
   #entregas { background: var(--black-2); border-top: 1px solid var(--black-3); }
   .entregas-text {
     max-width: 680px; font-size: 18px; color: var(--chrome-dim); line-height: 1.85;
     font-family: 'DM Serif Display', serif; font-style: italic;
   }
-
+ 
   #nichos { background: var(--black); border-top: 1px solid var(--black-3); }
   .nicho-intro { font-size: 14px; color: var(--chrome-dim); margin-bottom: 48px; }
   .nichos-list { display: flex; flex-direction: column; gap: 2px; }
@@ -244,7 +298,7 @@
     color: var(--chrome-dim); border: 1px solid var(--black-3); padding: 5px 12px; white-space: nowrap;
   }
   .nicho-tag.hl { color: var(--chrome); border-color: var(--chrome-dim); }
-
+ 
   #contato { background: var(--black-2); border-top: 1px solid var(--black-3); }
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
   .contact-left .section-title { margin-bottom: 24px; }
@@ -262,22 +316,24 @@
     color: var(--chrome-dim); width: 80px; flex-shrink: 0;
   }
   .contact-item-value { font-size: 15px; color: var(--chrome-lt); font-weight: 400; }
-
+ 
   footer {
     padding: 40px 60px; background: var(--black); border-top: 1px solid var(--black-3);
     display: flex; justify-content: space-between; align-items: center;
   }
   footer p { font-size: 11px; letter-spacing: 1.5px; color: var(--chrome-dim); text-transform: uppercase; }
-
+ 
   @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
   @keyframes scrollPulse { 0%,100% { transform: scaleY(1); opacity: 1; } 50% { transform: scaleY(0.5); opacity: 0.4; } }
-
+ 
   @media (max-width: 900px) {
     nav { padding: 24px 28px; }
     .nav-links { display: none; }
     .hero { padding: 0 28px 60px; }
     section { padding: 80px 28px; }
     .drive-band { padding: 28px; flex-direction: column; align-items: flex-start; }
+    .filo-grid { grid-template-columns: 1fr; }
+    .filo-lead { font-size: 22px; }
     .traj-grid { grid-template-columns: 1fr; gap: 40px; }
     .traj-sidebar { position: static; }
     .numbers-grid { grid-template-columns: repeat(2, 1fr); }
@@ -289,21 +345,23 @@
 </style>
 </head>
 <body>
-
+ 
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
-
+ 
 <nav>
   <a href="#" class="nav-logo">GF</a>
   <ul class="nav-links">
+    <li><a href="#mentalidade">Mentalidade</a></li>
     <li><a href="#trajetoria">Trajetória</a></li>
+    <li><a href="#mentorias">Mentorias</a></li>
     <li><a href="#numeros">Resultados</a></li>
     <li><a href="#entregas">Entregas</a></li>
     <li><a href="#nichos">Nichos</a></li>
     <li><a href="#contato">Contato</a></li>
   </ul>
 </nav>
-
+ 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg-text">FREITAS</div>
@@ -320,7 +378,7 @@
     <span>Scroll</span>
   </div>
 </section>
-
+ 
 <!-- DRIVE BAND -->
 <div class="drive-band">
   <div class="drive-band-left">
@@ -339,7 +397,38 @@
     Abrir no Google Drive →
   </a>
 </div>
-
+ 
+<!-- MENTALIDADE -->
+<section id="mentalidade">
+  <div class="section-inner">
+    <p class="section-eyebrow">00</p>
+    <h2 class="section-title">Mentalidade</h2>
+    <p class="filo-lead">Copy raiz, pra mim, é dominar todas as áreas do ofício — não só o anúncio, mas a oferta e o funil inteiro de um projeto. <span>Quem é excelente em algo faz aquilo todos os dias, com constância.</span> Por isso decidi mergulhar de cabeça e transformar isso no meu dia a dia. Não estou só aprendendo a escrever: estou aprendendo a pensar e a viver o ofício por completo.</p>
+    <div class="filo-grid">
+      <div class="filo-card">
+        <div class="filo-card-num">A</div>
+        <h3>Trabalho em equipe</h3>
+        <p>Aprendi na prática que copy não se faz no vácuo. Sei colaborar com editores, gestores de tráfego e outros copys — alinhar ideias, dividir responsabilidades e construir junto, sem ego.</p>
+      </div>
+      <div class="filo-card">
+        <div class="filo-card-num">B</div>
+        <h3>Saber ouvir</h3>
+        <p>Estou sempre aberto a opiniões e feedback. Boa parte da minha evolução veio de escutar quem pensava diferente e testar no lugar de discutir. A melhor ideia vence — não importa de quem ela veio.</p>
+      </div>
+      <div class="filo-card">
+        <div class="filo-card-num">C</div>
+        <h3>Adaptação</h3>
+        <p>O mercado de resposta direta é volátil — fontes mudam, ofertas saturam, ângulos morrem. Aprendi a me adaptar rápido, ler o cenário e reagir em vez de travar quando tudo muda do dia para a noite.</p>
+      </div>
+      <div class="filo-card">
+        <div class="filo-card-num">D</div>
+        <h3>Visão completa</h3>
+        <p>Não quero ser só um redator de anúncios. Estou construindo repertório em todas as etapas — da estruturação da oferta ao funil completo — porque entender o projeto inteiro é o que separa um copy raiz de quem só escreve peças soltas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+ 
 <!-- TRAJETÓRIA -->
 <section id="trajetoria">
   <div class="section-inner">
@@ -397,11 +486,46 @@
     </div>
   </div>
 </section>
-
+ 
+<!-- MENTORIAS -->
+<section id="mentorias">
+  <div class="section-inner">
+    <p class="section-eyebrow">02</p>
+    <h2 class="section-title">Mentorias</h2>
+    <p class="mentoria-intro">Formação contínua com nomes de referência no copywriting de resposta direta — em ordem cronológica:</p>
+    <div class="mentorias-list">
+      <div class="mentoria-item">
+        <div class="mentoria-num">01</div>
+        <div class="mentoria-info">
+          <div class="mentoria-name">Copy Ads 8D</div>
+          <div class="mentoria-by">Filêmon</div>
+        </div>
+        <div class="mentoria-tag">Primeira mentoria</div>
+      </div>
+      <div class="mentoria-item">
+        <div class="mentoria-num">02</div>
+        <div class="mentoria-info">
+          <div class="mentoria-name">Mentoria</div>
+          <div class="mentoria-by">Amanda Khayat</div>
+        </div>
+        <div class="mentoria-tag">Concluída</div>
+      </div>
+      <div class="mentoria-item">
+        <div class="mentoria-num">03</div>
+        <div class="mentoria-info">
+          <div class="mentoria-name">Mentoria</div>
+          <div class="mentoria-by">Gabriel Covolam</div>
+        </div>
+        <div class="mentoria-tag hl">Em andamento</div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
 <!-- NÚMEROS -->
 <section id="numeros">
   <div class="section-inner">
-    <p class="section-eyebrow">02</p>
+    <p class="section-eyebrow">03</p>
     <h2 class="section-title">Números</h2>
     <div class="numbers-grid">
       <div class="number-card">
@@ -428,20 +552,20 @@
     <p class="numbers-note">Escala de ED — agosto/2025 (vídeos + imagens) · Escala de Diabetes — fevereiro/2026 (apenas imagens) · YouTube ED — março/2026: $13.000</p>
   </div>
 </section>
-
+ 
 <!-- FORMATOS E ENTREGAS -->
 <section id="entregas">
   <div class="section-inner">
-    <p class="section-eyebrow">03</p>
+    <p class="section-eyebrow">04</p>
     <h2 class="section-title">Formatos &amp;<br>Entregas</h2>
     <p class="entregas-text">Nesse tempo que fiquei na empresa eu foquei mais em ads em vídeos e imagens. Fiz algumas micro leads para ED, mas deu uma pequena oxigenada nas ofertas na época — então não vou colocar aqui como resultado.</p>
   </div>
 </section>
-
+ 
 <!-- NICHOS -->
 <section id="nichos">
   <div class="section-inner">
-    <p class="section-eyebrow">04</p>
+    <p class="section-eyebrow">05</p>
     <h2 class="section-title">Mercados de<br>Atuação</h2>
     <p class="nicho-intro">Todos os nichos em que rodei foram no mercado americano (USA). Em ordem decrescente de volume e resultado:</p>
     <div class="nichos-list">
@@ -472,13 +596,13 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- CONTATO -->
 <section id="contato">
   <div class="section-inner">
     <div class="contact-grid">
       <div class="contact-left">
-        <p class="section-eyebrow">05</p>
+        <p class="section-eyebrow">06</p>
         <h2 class="section-title">Contato</h2>
         <p>Se você tem uma oferta que precisa de copy que converte no mercado americano, estou disponível para conversar.</p>
       </div>
@@ -501,17 +625,17 @@
     </div>
   </div>
 </section>
-
+ 
 <footer>
   <p>Gabriel Freitas — Copywriter DR</p>
   <p>Mercado Americano · 2026</p>
 </footer>
-
+ 
 <script>
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
   let mx = 0, my = 0, rx = 0, ry = 0;
-
+ 
   document.addEventListener('mousemove', e => {
     mx = e.clientX; my = e.clientY;
     cursor.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
@@ -526,7 +650,7 @@
     el.addEventListener('mouseenter', () => { ring.style.width = '56px'; ring.style.height = '56px'; ring.style.borderColor = 'var(--chrome-lt)'; });
     el.addEventListener('mouseleave', () => { ring.style.width = '36px'; ring.style.height = '36px'; ring.style.borderColor = 'var(--chrome-dim)'; });
   });
-
+ 
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -536,11 +660,12 @@
       }
     });
   }, { threshold: 0.15 });
-
-  document.querySelectorAll('.traj-block, .number-card, .nicho-item').forEach((el, i) => {
+ 
+  document.querySelectorAll('.filo-card, .traj-block, .mentoria-item, .number-card, .nicho-item').forEach((el, i) => {
     el.dataset.delay = (i % 4) * 80;
     observer.observe(el);
   });
 </script>
 </body>
 </html>
+ 
