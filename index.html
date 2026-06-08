@@ -66,7 +66,7 @@
     color: var(--chrome-dim); text-decoration: none; transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--chrome-lt); }
- 
+
   .hero {
     min-height: 100vh; display: flex; flex-direction: column;
     justify-content: flex-end; padding: 0 60px 80px; position: relative; overflow: hidden;
@@ -111,7 +111,7 @@
     background: linear-gradient(to bottom, var(--chrome-dim), transparent);
     animation: scrollPulse 2s ease-in-out infinite;
   }
- 
+
   /* DRIVE BAND */
   .drive-band {
     background: var(--black-2);
@@ -145,7 +145,7 @@
     padding-left: 36px;
   }
   .drive-band-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
- 
+
   section { padding: 120px 60px; position: relative; }
   .section-inner { max-width: 1100px; margin: 0 auto; }
   .section-eyebrow {
@@ -161,7 +161,7 @@
     font-size: clamp(36px, 5vw, 64px);
     color: var(--white); line-height: 1.1; margin-bottom: 60px;
   }
- 
+
   /* MENTALIDADE */
   #mentalidade { background: var(--black); border-top: 1px solid var(--black-3); }
   .filo-lead {
@@ -193,7 +193,7 @@
   }
   .filo-card p { font-size: 14px; color: var(--chrome-dim); line-height: 1.85; }
   .filo-card p + p { margin-top: 12px; }
- 
+
   #trajetoria { background: var(--black-2); border-top: 1px solid var(--black-3); }
   .traj-grid { display: grid; grid-template-columns: 280px 1fr; gap: 80px; align-items: start; }
   .traj-sidebar { position: sticky; top: 120px; }
@@ -221,7 +221,7 @@
   }
   .traj-content p { font-size: 14px; color: var(--chrome-dim); line-height: 1.85; }
   .traj-content p + p { margin-top: 12px; }
- 
+
   /* MENTORIAS */
   #mentorias { background: var(--black); border-top: 1px solid var(--black-3); }
   .mentoria-intro { font-size: 14px; color: var(--chrome-dim); margin-bottom: 48px; max-width: 560px; }
@@ -244,7 +244,7 @@
     color: var(--chrome-dim); border: 1px solid var(--black-3); padding: 5px 12px; white-space: nowrap;
   }
   .mentoria-tag.hl { color: var(--chrome); border-color: var(--chrome-dim); }
- 
+
   #numeros { background: var(--black); border-top: 1px solid var(--black-3); }
   .numbers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-bottom: 48px; }
   .number-card {
@@ -272,13 +272,52 @@
     font-size: 12px; color: var(--chrome-dim);
     border-left: 2px solid var(--black-3); padding-left: 20px; line-height: 1.8; font-style: italic;
   }
- 
+
   #entregas { background: var(--black-2); border-top: 1px solid var(--black-3); }
   .entregas-text {
     max-width: 680px; font-size: 18px; color: var(--chrome-dim); line-height: 1.85;
     font-family: 'DM Serif Display', serif; font-style: italic;
   }
- 
+
+  /* PROCESSO */
+  #processo { background: var(--black); border-top: 1px solid var(--black-3); }
+  .processo-intro { font-size: 14px; color: var(--chrome-dim); margin-bottom: 48px; max-width: 640px; line-height: 1.85; }
+  .processo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .processo-card {
+    background: var(--black-2); padding: 40px 32px;
+    display: flex; flex-direction: column;
+    border-left: 2px solid transparent;
+    opacity: 0; transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease, background 0.25s, border-color 0.25s;
+  }
+  .processo-card.visible { opacity: 1; transform: none; }
+  .processo-card:hover { background: var(--black-3); border-left-color: var(--chrome-dim); }
+  .processo-step {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px; letter-spacing: 2px; color: var(--chrome-dim); margin-bottom: 20px;
+  }
+  .processo-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px; color: var(--white); margin-bottom: 14px; font-style: italic; line-height: 1.25;
+  }
+  .processo-card p { font-size: 13px; color: var(--chrome-dim); line-height: 1.8; margin-bottom: 28px; flex: 1; }
+  .processo-link {
+    display: inline-flex; align-items: center; gap: 10px;
+    align-self: flex-start;
+    padding: 12px 20px;
+    border: 1px solid var(--black-3);
+    color: var(--chrome-lt); text-decoration: none;
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    transition: background 0.2s, border-color 0.2s, padding-left 0.2s;
+    border-left: 2px solid transparent;
+  }
+  .processo-link:hover {
+    background: var(--black);
+    border-left-color: var(--chrome-dim);
+    padding-left: 28px;
+  }
+  .processo-link svg { width: 14px; height: 14px; flex-shrink: 0; }
+
   #nichos { background: var(--black); border-top: 1px solid var(--black-3); }
   .nicho-intro { font-size: 14px; color: var(--chrome-dim); margin-bottom: 48px; }
   .nichos-list { display: flex; flex-direction: column; gap: 2px; }
@@ -299,7 +338,7 @@
     color: var(--chrome-dim); border: 1px solid var(--black-3); padding: 5px 12px; white-space: nowrap;
   }
   .nicho-tag.hl { color: var(--chrome); border-color: var(--chrome-dim); }
- 
+
   #contato { background: var(--black-2); border-top: 1px solid var(--black-3); }
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
   .contact-left .section-title { margin-bottom: 24px; }
@@ -317,16 +356,16 @@
     color: var(--chrome-dim); width: 80px; flex-shrink: 0;
   }
   .contact-item-value { font-size: 15px; color: var(--chrome-lt); font-weight: 400; }
- 
+
   footer {
     padding: 40px 60px; background: var(--black); border-top: 1px solid var(--black-3);
     display: flex; justify-content: space-between; align-items: center;
   }
   footer p { font-size: 11px; letter-spacing: 1.5px; color: var(--chrome-dim); text-transform: uppercase; }
- 
+
   @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
   @keyframes scrollPulse { 0%,100% { transform: scaleY(1); opacity: 1; } 50% { transform: scaleY(0.5); opacity: 0.4; } }
- 
+
   @media (max-width: 900px) {
     nav { padding: 24px 28px; }
     .nav-links { display: none; }
@@ -338,6 +377,7 @@
     .traj-grid { grid-template-columns: 1fr; gap: 40px; }
     .traj-sidebar { position: static; }
     .numbers-grid { grid-template-columns: repeat(2, 1fr); }
+    .processo-grid { grid-template-columns: 1fr; }
     .nicho-item { grid-template-columns: 30px 1fr; }
     .nicho-desc, .nicho-tag { display: none; }
     .contact-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -346,10 +386,10 @@
 </style>
 </head>
 <body>
- 
+
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
- 
+
 <nav>
   <a href="#" class="nav-logo">GF</a>
   <ul class="nav-links">
@@ -358,11 +398,12 @@
     <li><a href="#mentorias">Mentorias</a></li>
     <li><a href="#numeros">Resultados</a></li>
     <li><a href="#entregas">Entregas</a></li>
+    <li><a href="#processo">Processo</a></li>
     <li><a href="#nichos">Nichos</a></li>
     <li><a href="#contato">Contato</a></li>
   </ul>
 </nav>
- 
+
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg-text">FREITAS</div>
@@ -379,7 +420,7 @@
     <span>Scroll</span>
   </div>
 </section>
- 
+
 <!-- DRIVE BAND -->
 <div class="drive-band">
   <div class="drive-band-left">
@@ -398,7 +439,7 @@
     Abrir no Google Drive →
   </a>
 </div>
- 
+
 <!-- MENTALIDADE -->
 <section id="mentalidade">
   <div class="section-inner">
@@ -429,7 +470,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- TRAJETÓRIA -->
 <section id="trajetoria">
   <div class="section-inner">
@@ -489,7 +530,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- MENTORIAS -->
 <section id="mentorias">
   <div class="section-inner">
@@ -524,7 +565,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- NÚMEROS -->
 <section id="numeros">
   <div class="section-inner">
@@ -555,7 +596,7 @@
     <p class="numbers-note">Escala de ED — agosto/2025 (vídeos + imagens) · Escala de Diabetes — fevereiro/2026 (apenas imagens) · YouTube ED — março/2026: $13.000</p>
   </div>
 </section>
- 
+
 <!-- FORMATOS E ENTREGAS -->
 <section id="entregas">
   <div class="section-inner">
@@ -564,11 +605,53 @@
     <p class="entregas-text">Nesse tempo que fiquei na empresa eu foquei mais em ads em vídeos e imagens. Mas sempre planejei escrever todos os tipos de copy — principalmente VSL, que é algo que quero dominar e estou aprendendo junto nesse processo.</p>
   </div>
 </section>
- 
+
+<!-- PROCESSO -->
+<section id="processo">
+  <div class="section-inner">
+    <p class="section-eyebrow">05</p>
+    <h2 class="section-title">Processo</h2>
+    <p class="processo-intro">Antes de escrever uma linha, eu pesquiso. Cada anúncio nasce de uma pesquisa estruturada de avatar — 7 camadas que descem do desejo de superfície até a cena exata em que o leitor se reconhece. Só depois disso o ad sai do papel.</p>
+    <div class="processo-grid">
+
+      <div class="processo-card">
+        <div class="processo-step">Etapa 01</div>
+        <h3>Pesquisa de Avatar</h3>
+        <p>Doc inicial de imersão no nicho. Mapeia camadas básicas do público — desejos, dores, contexto e linguagem — usando reviews, Reddit e fóruns como matéria-prima.</p>
+        <a class="processo-link" href="https://docs.google.com/document/d/1pHBA9fsfJrg22jrcE_smDY5Vfe5nvA3v7gCA0qz1WGg/edit?usp=sharing" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>
+          Ver doc
+        </a>
+      </div>
+
+      <div class="processo-card">
+        <div class="processo-step">Etapa 02</div>
+        <h3>Manual de Avatar — 7 camadas</h3>
+        <p>Framework completo de dissecação do avatar: desejo primário, motivação, estado emocional, consciência, crenças, linguagem e o momento "isso sou eu". Cada bloco vira munição direta pro copy.</p>
+        <a class="processo-link" href="https://docs.google.com/document/d/1LpzU0yIhRu9RNOrfhAtQXfYrSnLw1vipzmn9EdHl7yk/edit?usp=sharing" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>
+          Ver doc
+        </a>
+      </div>
+
+      <div class="processo-card">
+        <div class="processo-step">Etapa 03</div>
+        <h3>Produção do Anúncio</h3>
+        <p>Card de criação por demanda: ângulo, formato, avatar, referência visual, hooks testáveis e body completo. É onde toda a pesquisa vira o anúncio final pronto pra rodar.</p>
+        <a class="processo-link" href="https://docs.google.com/document/d/1pgIEgysneZm04nZaH7nLkWjaeh4-Z8p_XJpIZpjv9fc/edit?usp=sharing" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>
+          Ver doc
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- NICHOS -->
 <section id="nichos">
   <div class="section-inner">
-    <p class="section-eyebrow">05</p>
+    <p class="section-eyebrow">06</p>
     <h2 class="section-title">Mercados de<br>Atuação</h2>
     <p class="nicho-intro">Todos os nichos em que rodei foram no mercado americano (USA). Em ordem decrescente de volume e resultado:</p>
     <div class="nichos-list">
@@ -599,13 +682,13 @@
     </div>
   </div>
 </section>
- 
+
 <!-- CONTATO -->
 <section id="contato">
   <div class="section-inner">
     <div class="contact-grid">
       <div class="contact-left">
-        <p class="section-eyebrow">06</p>
+        <p class="section-eyebrow">07</p>
         <h2 class="section-title">Contato</h2>
         <p>Se você tem uma oferta que precisa de copy que converte no mercado americano, estou disponível para conversar.</p>
       </div>
@@ -628,17 +711,17 @@
     </div>
   </div>
 </section>
- 
+
 <footer>
   <p>Gabriel Freitas — Copywriter DR</p>
   <p>Mercado Americano · 2026</p>
 </footer>
- 
+
 <script>
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
   let mx = 0, my = 0, rx = 0, ry = 0;
- 
+
   document.addEventListener('mousemove', e => {
     mx = e.clientX; my = e.clientY;
     cursor.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
@@ -653,7 +736,7 @@
     el.addEventListener('mouseenter', () => { ring.style.width = '56px'; ring.style.height = '56px'; ring.style.borderColor = 'var(--chrome-lt)'; });
     el.addEventListener('mouseleave', () => { ring.style.width = '36px'; ring.style.height = '36px'; ring.style.borderColor = 'var(--chrome-dim)'; });
   });
- 
+
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -663,12 +746,11 @@
       }
     });
   }, { threshold: 0.15 });
- 
-  document.querySelectorAll('.filo-card, .traj-block, .mentoria-item, .number-card, .nicho-item').forEach((el, i) => {
+
+  document.querySelectorAll('.filo-card, .traj-block, .mentoria-item, .number-card, .processo-card, .nicho-item').forEach((el, i) => {
     el.dataset.delay = (i % 4) * 80;
     observer.observe(el);
   });
 </script>
 </body>
 </html>
- 
