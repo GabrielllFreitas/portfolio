@@ -15,6 +15,9 @@
     --chrome-lt: #d8dadc;
     --chrome-dim: #6e7178;
     --white: #f5f5f3;
+    /* fundos semitransparentes p/ as estrelas atravessarem o site */
+    --panel: rgba(8,8,8,0.55);
+    --panel-2: rgba(15,15,15,0.6);
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -26,6 +29,14 @@
     overflow-x: hidden;
     cursor: none;
   }
+
+  /* ---- Campo de estrelas (fundo do hero) ---- */
+  #starfield {
+    position: fixed; inset: 0;
+    width: 100%; height: 100%;
+    z-index: 0; pointer-events: none; display: block;
+  }
+
   .cursor {
     width: 10px; height: 10px;
     background: var(--chrome);
@@ -70,6 +81,7 @@
   .hero {
     min-height: 100vh; display: flex; flex-direction: column;
     justify-content: flex-end; padding: 0 60px 80px; position: relative; overflow: hidden;
+    z-index: 1;
   }
   .hero-bg-text {
     position: absolute; top: 50%; left: -20px;
@@ -89,11 +101,13 @@
     font-size: clamp(72px, 13vw, 180px);
     line-height: 0.9; letter-spacing: -2px; color: var(--white);
     opacity: 0; animation: fadeUp 0.9s ease 0.35s forwards;
+    position: relative;
   }
   .hero-name span { color: var(--chrome); display: block; }
   .hero-sub {
     margin-top: 32px; display: flex; align-items: center; gap: 40px;
     opacity: 0; animation: fadeUp 0.9s ease 0.55s forwards;
+    position: relative;
   }
   .hero-sub p { font-size: 15px; color: var(--chrome-dim); max-width: 360px; line-height: 1.7; }
   .hero-line { flex: 1; height: 1px; background: linear-gradient(to right, var(--chrome-dim), transparent); max-width: 200px; }
@@ -114,12 +128,13 @@
 
   /* DRIVE BAND */
   .drive-band {
-    background: var(--black-2);
+    background: var(--panel-2);
     border-top: 1px solid var(--black-3);
     border-bottom: 1px solid var(--black-3);
     padding: 36px 60px;
     display: flex; align-items: center; justify-content: space-between;
     flex-wrap: wrap; gap: 20px;
+    position: relative; z-index: 1;
   }
   .drive-band-left {}
   .drive-band-eyebrow {
@@ -146,7 +161,7 @@
   }
   .drive-band-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
 
-  section { padding: 120px 60px; position: relative; }
+  section { padding: 120px 60px; position: relative; z-index: 1; }
   .section-inner { max-width: 1100px; margin: 0 auto; }
   .section-eyebrow {
     font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
@@ -163,7 +178,7 @@
   }
 
   /* MENTALIDADE */
-  #mentalidade { background: var(--black); border-top: 1px solid var(--black-3); }
+  #mentalidade { background: var(--panel); border-top: 1px solid var(--black-3); }
   .filo-lead {
     font-family: 'DM Serif Display', serif;
     font-size: clamp(22px, 3vw, 34px);
@@ -194,7 +209,7 @@
   .filo-card p { font-size: 14px; color: var(--chrome-dim); line-height: 1.85; }
   .filo-card p + p { margin-top: 12px; }
 
-  #trajetoria { background: var(--black-2); border-top: 1px solid var(--black-3); }
+  #trajetoria { background: var(--panel-2); border-top: 1px solid var(--black-3); }
   .traj-grid { display: grid; grid-template-columns: 280px 1fr; gap: 80px; align-items: start; }
   .traj-sidebar { position: sticky; top: 120px; }
   .traj-sidebar .section-title { font-size: 42px; margin-bottom: 24px; }
@@ -223,7 +238,7 @@
   .traj-content p + p { margin-top: 12px; }
 
   /* MENTORIAS */
-  #mentorias { background: var(--black); border-top: 1px solid var(--black-3); }
+  #mentorias { background: var(--panel); border-top: 1px solid var(--black-3); }
   .mentoria-intro { font-size: 14px; color: var(--chrome-dim); margin-bottom: 48px; max-width: 560px; }
   .mentorias-list { display: flex; flex-direction: column; gap: 2px; }
   .mentoria-item {
@@ -245,7 +260,7 @@
   }
   .mentoria-tag.hl { color: var(--chrome); border-color: var(--chrome-dim); }
 
-  #numeros { background: var(--black); border-top: 1px solid var(--black-3); }
+  #numeros { background: var(--panel); border-top: 1px solid var(--black-3); }
   .numbers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-bottom: 48px; }
   .number-card {
     background: var(--black-2); padding: 36px 28px; position: relative; overflow: hidden;
@@ -273,14 +288,14 @@
     border-left: 2px solid var(--black-3); padding-left: 20px; line-height: 1.8; font-style: italic;
   }
 
-  #entregas { background: var(--black-2); border-top: 1px solid var(--black-3); }
+  #entregas { background: var(--panel-2); border-top: 1px solid var(--black-3); }
   .entregas-text {
     max-width: 680px; font-size: 18px; color: var(--chrome-dim); line-height: 1.85;
     font-family: 'DM Serif Display', serif; font-style: italic;
   }
 
   /* PROCESSO */
-  #processo { background: var(--black); border-top: 1px solid var(--black-3); }
+  #processo { background: var(--panel); border-top: 1px solid var(--black-3); }
   .processo-intro { font-size: 14px; color: var(--chrome-dim); margin-bottom: 48px; max-width: 640px; line-height: 1.85; }
   .processo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
   .processo-card {
@@ -318,7 +333,7 @@
   }
   .processo-link svg { width: 14px; height: 14px; flex-shrink: 0; }
 
-  #nichos { background: var(--black); border-top: 1px solid var(--black-3); }
+  #nichos { background: var(--panel); border-top: 1px solid var(--black-3); }
   .nicho-intro { font-size: 14px; color: var(--chrome-dim); margin-bottom: 48px; }
   .nichos-list { display: flex; flex-direction: column; gap: 2px; }
   .nicho-item {
@@ -339,7 +354,7 @@
   }
   .nicho-tag.hl { color: var(--chrome); border-color: var(--chrome-dim); }
 
-  #contato { background: var(--black-2); border-top: 1px solid var(--black-3); }
+  #contato { background: var(--panel-2); border-top: 1px solid var(--black-3); }
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
   .contact-left .section-title { margin-bottom: 24px; }
   .contact-left p { font-size: 14px; color: var(--chrome-dim); line-height: 1.85; max-width: 360px; }
@@ -358,8 +373,9 @@
   .contact-item-value { font-size: 15px; color: var(--chrome-lt); font-weight: 400; }
 
   footer {
-    padding: 40px 60px; background: var(--black); border-top: 1px solid var(--black-3);
+    padding: 40px 60px; background: var(--panel); border-top: 1px solid var(--black-3);
     display: flex; justify-content: space-between; align-items: center;
+    position: relative; z-index: 1;
   }
   footer p { font-size: 11px; letter-spacing: 1.5px; color: var(--chrome-dim); text-transform: uppercase; }
 
@@ -383,9 +399,16 @@
     .contact-grid { grid-template-columns: 1fr; gap: 40px; }
     footer { flex-direction: column; gap: 12px; text-align: center; }
   }
+
+  @media (hover: none) and (pointer: coarse) {
+    body { cursor: auto; }
+    .cursor, .cursor-ring { display: none; }
+  }
 </style>
 </head>
 <body>
+
+<canvas id="starfield"></canvas>
 
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
@@ -717,6 +740,175 @@
   <p>Mercado Americano · 2026</p>
 </footer>
 
+<script>
+/* ============================================================
+   Starfield — campo de estrelas interativo com gravidade
+   ============================================================ */
+(function () {
+  const canvas = document.getElementById('starfield');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d', { alpha: true });
+
+  let W = 0, H = 0, DPR = 1;
+  let stars = [];
+
+  const pointer = { x: -9999, y: -9999, active: false };
+  const par = { tx: 0, ty: 0, x: 0, y: 0 };
+
+  const LAYERS = [
+    { depth: 0.35, size: [0.5, 1.0], alpha: [0.18, 0.40], parallax: 6 },
+    { depth: 0.65, size: [0.8, 1.6], alpha: [0.30, 0.62], parallax: 14 },
+    { depth: 1.00, size: [1.1, 2.4], alpha: [0.50, 0.95], parallax: 26 },
+  ];
+
+  const GRAV_RADIUS = 240;
+  const GRAV_FORCE  = 1700;
+  const SWIRL       = 0.55;
+  const SPRING      = 0.018;
+  const FRICTION    = 0.90;
+
+  function rand(min, max) { return min + Math.random() * (max - min); }
+
+  function densityCount() {
+    const area = W * H;
+    return Math.min(520, Math.max(140, Math.round(area / 7000)));
+  }
+
+  function makeStars() {
+    const count = densityCount();
+    stars = [];
+    for (let i = 0; i < count; i++) {
+      const layer = LAYERS[(Math.random() * LAYERS.length) | 0];
+      const bx = Math.random() * W;
+      const by = Math.random() * H;
+      stars.push({
+        bx, by, x: bx, y: by, vx: 0, vy: 0, layer,
+        size: rand(layer.size[0], layer.size[1]),
+        baseAlpha: rand(layer.alpha[0], layer.alpha[1]),
+        tw: Math.random() * Math.PI * 2,
+        twSpeed: rand(0.6, 1.8),
+        drift: rand(0.02, 0.10) * (Math.random() < 0.5 ? -1 : 1),
+      });
+    }
+  }
+
+  function resize() {
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth;
+    H = window.innerHeight;
+    canvas.width = W * DPR;
+    canvas.height = H * DPR;
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    makeStars();
+  }
+
+  let last = performance.now();
+  function frame(now) {
+    const dt = Math.min(2.5, (now - last) / 16.67);
+    last = now;
+
+    par.x += (par.tx - par.x) * 0.06;
+    par.y += (par.ty - par.y) * 0.06;
+
+    ctx.clearRect(0, 0, W, H);
+
+    const px = pointer.x, py = pointer.y;
+    const active = pointer.active;
+
+    for (let i = 0; i < stars.length; i++) {
+      const s = stars[i];
+
+      s.bx += s.drift * dt;
+      if (s.bx < -20) s.bx = W + 20;
+      if (s.bx > W + 20) s.bx = -20;
+
+      if (active) {
+        const dx = px - s.x;
+        const dy = py - s.y;
+        const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+        if (dist < GRAV_RADIUS) {
+          const f = (1 - dist / GRAV_RADIUS);
+          const pull = (GRAV_FORCE * f * f) / (dist * 60);
+          s.vx += (dx / dist) * pull * dt;
+          s.vy += (dy / dist) * pull * dt;
+          s.vx += (-dy / dist) * pull * SWIRL * dt;
+          s.vy += (dx / dist) * pull * SWIRL * dt;
+        }
+      }
+
+      const ox = s.bx + par.x * s.layer.parallax;
+      const oy = s.by + par.y * s.layer.parallax;
+      s.vx += (ox - s.x) * SPRING * dt;
+      s.vy += (oy - s.y) * SPRING * dt;
+
+      s.vx *= FRICTION;
+      s.vy *= FRICTION;
+      s.x += s.vx * dt;
+      s.y += s.vy * dt;
+
+      s.tw += 0.03 * s.twSpeed * dt;
+      const twinkle = 0.65 + 0.35 * Math.sin(s.tw);
+
+      const speed = Math.hypot(s.vx, s.vy);
+      let alpha = Math.min(1, s.baseAlpha * twinkle + speed * 0.04);
+
+      if (speed > 1.4) {
+        const tlen = Math.min(speed * 1.6, 22);
+        const nx = s.vx / speed, ny = s.vy / speed;
+        const grad = ctx.createLinearGradient(s.x - nx * tlen, s.y - ny * tlen, s.x, s.y);
+        grad.addColorStop(0, 'rgba(216,218,220,0)');
+        grad.addColorStop(1, 'rgba(245,245,243,' + alpha.toFixed(3) + ')');
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = s.size;
+        ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.moveTo(s.x - nx * tlen, s.y - ny * tlen);
+        ctx.lineTo(s.x, s.y);
+        ctx.stroke();
+      } else {
+        ctx.beginPath();
+        ctx.fillStyle = 'rgba(232,234,236,' + alpha.toFixed(3) + ')';
+        ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    if (active) {
+      const r = GRAV_RADIUS * 0.9;
+      const halo = ctx.createRadialGradient(px, py, 0, px, py, r);
+      halo.addColorStop(0, 'rgba(176,179,184,0.05)');
+      halo.addColorStop(0.6, 'rgba(176,179,184,0.015)');
+      halo.addColorStop(1, 'rgba(176,179,184,0)');
+      ctx.fillStyle = halo;
+      ctx.beginPath();
+      ctx.arc(px, py, r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    requestAnimationFrame(frame);
+  }
+
+  window.addEventListener('resize', resize);
+  window.addEventListener('mousemove', (e) => {
+    pointer.x = e.clientX; pointer.y = e.clientY; pointer.active = true;
+    par.tx = (e.clientX / W - 0.5) * 2;
+    par.ty = (e.clientY / H - 0.5) * 2;
+  });
+  window.addEventListener('mouseleave', () => { pointer.active = false; });
+  window.addEventListener('touchmove', (e) => {
+    const t = e.touches[0]; if (!t) return;
+    pointer.x = t.clientX; pointer.y = t.clientY; pointer.active = true;
+    par.tx = (t.clientX / W - 0.5) * 2;
+    par.ty = (t.clientY / H - 0.5) * 2;
+  }, { passive: true });
+  window.addEventListener('touchend', () => { pointer.active = false; });
+
+  resize();
+  requestAnimationFrame(frame);
+})();
+</script>
 <script>
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
