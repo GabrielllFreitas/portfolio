@@ -71,12 +71,37 @@
     font-size: 22px; letter-spacing: 3px;
     color: var(--chrome-lt); text-decoration: none;
   }
-  .nav-links { display: flex; gap: 40px; list-style: none; }
+  .nav-right { display: flex; align-items: center; gap: 28px; }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
   .nav-links a {
     font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase;
     color: var(--chrome-dim); text-decoration: none; transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--chrome-lt); }
+
+  /* ---- Seletor de idioma ---- */
+  .lang-toggle {
+    display: inline-flex; align-items: center;
+    border: 1px solid var(--black-3);
+    background: var(--panel-2);
+    position: relative;
+  }
+  .lang-toggle button {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px; letter-spacing: 2px;
+    padding: 7px 14px;
+    background: transparent; border: none;
+    color: var(--chrome-dim); cursor: none;
+    transition: color 0.25s; position: relative; z-index: 2;
+  }
+  .lang-toggle button.active { color: var(--white); }
+  .lang-toggle .lang-pill {
+    position: absolute; top: 0; bottom: 0; left: 0;
+    width: 50%; background: var(--black-3);
+    border-left: 2px solid var(--chrome-dim);
+    transition: transform 0.3s cubic-bezier(.4,0,.2,1); z-index: 1;
+  }
+  .lang-toggle.en .lang-pill { transform: translateX(100%); }
 
   .hero {
     min-height: 100vh; display: flex; flex-direction: column;
@@ -382,9 +407,13 @@
   @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
   @keyframes scrollPulse { 0%,100% { transform: scaleY(1); opacity: 1; } 50% { transform: scaleY(0.5); opacity: 0.4; } }
 
+  /* esconde os links de seção quando não cabem junto do seletor de idioma */
+  @media (max-width: 1140px) {
+    .nav-links { display: none; }
+  }
+
   @media (max-width: 900px) {
     nav { padding: 24px 28px; }
-    .nav-links { display: none; }
     .hero { padding: 0 28px 60px; }
     section { padding: 80px 28px; }
     .drive-band { padding: 28px; flex-direction: column; align-items: flex-start; }
@@ -403,6 +432,7 @@
   @media (hover: none) and (pointer: coarse) {
     body { cursor: auto; }
     .cursor, .cursor-ring { display: none; }
+    .lang-toggle button { cursor: pointer; }
   }
 </style>
 </head>
@@ -415,42 +445,49 @@
 
 <nav>
   <a href="#" class="nav-logo">GF</a>
-  <ul class="nav-links">
-    <li><a href="#mentalidade">Mentalidade</a></li>
-    <li><a href="#trajetoria">Trajetória</a></li>
-    <li><a href="#mentorias">Mentorias</a></li>
-    <li><a href="#numeros">Resultados</a></li>
-    <li><a href="#entregas">Entregas</a></li>
-    <li><a href="#processo">Processo</a></li>
-    <li><a href="#nichos">Nichos</a></li>
-    <li><a href="#contato">Contato</a></li>
-  </ul>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#mentalidade" data-pt="Mentalidade" data-en="Mindset">Mentalidade</a></li>
+      <li><a href="#trajetoria" data-pt="Trajetória" data-en="Journey">Trajetória</a></li>
+      <li><a href="#mentorias" data-pt="Mentorias" data-en="Mentorships">Mentorias</a></li>
+      <li><a href="#numeros" data-pt="Resultados" data-en="Results">Resultados</a></li>
+      <li><a href="#entregas" data-pt="Entregas" data-en="Deliverables">Entregas</a></li>
+      <li><a href="#processo" data-pt="Processo" data-en="Process">Processo</a></li>
+      <li><a href="#nichos" data-pt="Nichos" data-en="Niches">Nichos</a></li>
+      <li><a href="#contato" data-pt="Contato" data-en="Contact">Contato</a></li>
+    </ul>
+    <div class="lang-toggle" id="langToggle">
+      <span class="lang-pill"></span>
+      <button data-lang="pt" class="active">PT</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg-text">FREITAS</div>
-  <p class="hero-tag">Copywriter · Resposta Direta · USA Market</p>
+  <p class="hero-tag" data-pt="Copywriter · Resposta Direta · USA Market" data-en="Copywriter · Direct Response · USA Market">Copywriter · Resposta Direta · USA Market</p>
   <h1 class="hero-name">
     Gabriel<span>Freitas</span>
   </h1>
   <div class="hero-sub">
-    <p>Copy que converte no mercado americano. Especialista em ED, Diabetes e Emagrecimento.</p>
+    <p data-pt="Copy que converte no mercado americano. Especialista em ED, Diabetes e Emagrecimento." data-en="Copy that converts in the American market. Specialist in ED, Diabetes and Weight Loss.">Copy que converte no mercado americano. Especialista em ED, Diabetes e Emagrecimento.</p>
     <div class="hero-line"></div>
   </div>
   <div class="hero-scroll">
     <div class="scroll-line"></div>
-    <span>Scroll</span>
+    <span data-pt="Scroll" data-en="Scroll">Scroll</span>
   </div>
 </section>
 
 <!-- DRIVE BAND -->
 <div class="drive-band">
   <div class="drive-band-left">
-    <div class="drive-band-eyebrow">Amostras de anúncios</div>
-    <div class="drive-band-title">Ver anúncios reais</div>
+    <div class="drive-band-eyebrow" data-pt="Amostras de anúncios" data-en="Ad samples">Amostras de anúncios</div>
+    <div class="drive-band-title" data-pt="Ver anúncios reais" data-en="See real ads">Ver anúncios reais</div>
   </div>
-  <a class="drive-band-btn" href="https://drive.google.com/drive/folders/1KQ3-5pmGMAfjUvnbkjn18stIW4IMKG2X?usp=sharing" target="_blank" rel="noopener">
+  <a class="drive-band-btn" href="https://drive.google.com/drive/folders/1KQ3-5pmGMAfjUvnbkjn18stIW4IMKG2X?usp=sharing" target="_blank" rel="noopener" data-pt='<svg viewBox="0 0 87.3 78" xmlns="http://www.w3.org/2000/svg"><path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/><path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0 -1.2 4.5h27.5z" fill="#00ac47"/><path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/><path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.5-1.2h-18.5c-1.6 0-3.15.45-4.5 1.2z" fill="#00832d"/><path d="m59.8 53h-32.3l-13.75 23.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.45 4.5-1.2z" fill="#2684fc"/><path d="m73.4 26.5-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8 16.15 27h27.45c0-1.55-.4-3.1-1.2-4.5z" fill="#ffba00"/></svg> Abrir no Google Drive →' data-en='<svg viewBox="0 0 87.3 78" xmlns="http://www.w3.org/2000/svg"><path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/><path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0 -1.2 4.5h27.5z" fill="#00ac47"/><path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/><path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.5-1.2h-18.5c-1.6 0-3.15.45-4.5 1.2z" fill="#00832d"/><path d="m59.8 53h-32.3l-13.75 23.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.45 4.5-1.2z" fill="#2684fc"/><path d="m73.4 26.5-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8 16.15 27h27.45c0-1.55-.4-3.1-1.2-4.5z" fill="#ffba00"/></svg> Open in Google Drive →'>
     <svg viewBox="0 0 87.3 78" xmlns="http://www.w3.org/2000/svg">
       <path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/>
       <path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0 -1.2 4.5h27.5z" fill="#00ac47"/>
@@ -467,28 +504,28 @@
 <section id="mentalidade">
   <div class="section-inner">
     <p class="section-eyebrow">00</p>
-    <h2 class="section-title">Mentalidade</h2>
-    <p class="filo-lead">Copy raiz, pra mim, é dominar todas as áreas do ofício — não só o anúncio, mas a oferta e o funil inteiro de um projeto. <span>Quem é excelente em algo faz aquilo todos os dias, com constância.</span> Por isso decidi mergulhar de cabeça e transformar isso no meu dia a dia. Não estou só aprendendo a escrever: estou aprendendo a pensar e a viver o ofício por completo.</p>
+    <h2 class="section-title" data-pt="Mentalidade" data-en="Mindset">Mentalidade</h2>
+    <p class="filo-lead" data-pt="Copy raiz, pra mim, é dominar todas as áreas do ofício — não só o anúncio, mas a oferta e o funil inteiro de um projeto. &lt;span&gt;Quem é excelente em algo faz aquilo todos os dias, com constância.&lt;/span&gt; Por isso decidi mergulhar de cabeça e transformar isso no meu dia a dia. Não estou só aprendendo a escrever: estou aprendendo a pensar e a viver o ofício por completo." data-en="Real copy, to me, means mastering every area of the craft — not just the ad, but the offer and the entire funnel of a project. &lt;span&gt;Whoever is excellent at something does it every single day, with consistency.&lt;/span&gt; That's why I decided to dive in headfirst and make this my everyday life. I'm not just learning to write: I'm learning to think and live the craft in full.">Copy raiz, pra mim, é dominar todas as áreas do ofício — não só o anúncio, mas a oferta e o funil inteiro de um projeto. <span>Quem é excelente em algo faz aquilo todos os dias, com constância.</span> Por isso decidi mergulhar de cabeça e transformar isso no meu dia a dia. Não estou só aprendendo a escrever: estou aprendendo a pensar e a viver o ofício por completo.</p>
     <div class="filo-grid">
       <div class="filo-card">
         <div class="filo-card-num">A</div>
-        <h3>Trabalho em equipe</h3>
-        <p>Aprendi na prática que copy não se faz no vácuo. Sei colaborar com editores, gestores de tráfego e outros copys — alinhar ideias, dividir responsabilidades e construir junto, sem ego.</p>
+        <h3 data-pt="Trabalho em equipe" data-en="Teamwork">Trabalho em equipe</h3>
+        <p data-pt="Aprendi na prática que copy não se faz no vácuo. Sei colaborar com editores, gestores de tráfego e outros copys — alinhar ideias, dividir responsabilidades e construir junto, sem ego." data-en="I learned in practice that copy isn't made in a vacuum. I know how to collaborate with editors, traffic managers and other copywriters — aligning ideas, sharing responsibilities and building together, without ego.">Aprendi na prática que copy não se faz no vácuo. Sei colaborar com editores, gestores de tráfego e outros copys — alinhar ideias, dividir responsabilidades e construir junto, sem ego.</p>
       </div>
       <div class="filo-card">
         <div class="filo-card-num">B</div>
-        <h3>Saber ouvir</h3>
-        <p>Estou sempre aberto a opiniões e feedback. Boa parte da minha evolução veio de escutar quem pensava diferente e testar no lugar de discutir. A melhor ideia vence — não importa de quem ela veio.</p>
+        <h3 data-pt="Saber ouvir" data-en="Knowing how to listen">Saber ouvir</h3>
+        <p data-pt="Estou sempre aberto a opiniões e feedback. Boa parte da minha evolução veio de escutar quem pensava diferente e testar no lugar de discutir. A melhor ideia vence — não importa de quem ela veio." data-en="I'm always open to opinions and feedback. A big part of my growth came from listening to people who thought differently and testing instead of arguing. The best idea wins — no matter who it came from.">Estou sempre aberto a opiniões e feedback. Boa parte da minha evolução veio de escutar quem pensava diferente e testar no lugar de discutir. A melhor ideia vence — não importa de quem ela veio.</p>
       </div>
       <div class="filo-card">
         <div class="filo-card-num">C</div>
-        <h3>Adaptação</h3>
-        <p>O mercado de resposta direta é volátil — fontes mudam, ofertas saturam, ângulos morrem. Aprendi a me adaptar rápido, ler o cenário e reagir em vez de travar quando tudo muda do dia para a noite.</p>
+        <h3 data-pt="Adaptação" data-en="Adaptation">Adaptação</h3>
+        <p data-pt="O mercado de resposta direta é volátil — fontes mudam, ofertas saturam, ângulos morrem. Aprendi a me adaptar rápido, ler o cenário e reagir em vez de travar quando tudo muda do dia para a noite." data-en="The direct response market is volatile — sources change, offers saturate, angles die. I've learned to adapt fast, read the landscape and react instead of freezing when everything changes overnight.">O mercado de resposta direta é volátil — fontes mudam, ofertas saturam, ângulos morrem. Aprendi a me adaptar rápido, ler o cenário e reagir em vez de travar quando tudo muda do dia para a noite.</p>
       </div>
       <div class="filo-card">
         <div class="filo-card-num">D</div>
-        <h3>Visão completa</h3>
-        <p>Não quero ser só um redator de anúncios. Estou construindo repertório em todas as etapas — da estruturação da oferta ao funil completo — porque entender o projeto inteiro é o que separa um copy raiz de quem só escreve peças soltas.</p>
+        <h3 data-pt="Visão completa" data-en="The full picture">Visão completa</h3>
+        <p data-pt="Não quero ser só um redator de anúncios. Estou construindo repertório em todas as etapas — da estruturação da oferta ao funil completo — porque entender o projeto inteiro é o que separa um copy raiz de quem só escreve peças soltas." data-en="I don't want to be just an ad writer. I'm building a repertoire across every stage — from structuring the offer to the complete funnel — because understanding the whole project is what separates a real copywriter from someone who just writes loose pieces.">Não quero ser só um redator de anúncios. Estou construindo repertório em todas as etapas — da estruturação da oferta ao funil completo — porque entender o projeto inteiro é o que separa um copy raiz de quem só escreve peças soltas.</p>
       </div>
     </div>
   </div>
@@ -500,53 +537,53 @@
     <div class="traj-grid">
       <div class="traj-sidebar">
         <p class="section-eyebrow">01</p>
-        <h2 class="section-title">Trajetória</h2>
-        <p class="traj-sidebar-note">Do zero ao mercado americano, passando por duas agências e aprendendo cada coisa na marra.</p>
+        <h2 class="section-title" data-pt="Trajetória" data-en="Journey">Trajetória</h2>
+        <p class="traj-sidebar-note" data-pt="Do zero ao mercado americano, passando por duas agências e aprendendo cada coisa na marra." data-en="From zero to the American market, going through two agencies and learning every bit the hard way.">Do zero ao mercado americano, passando por duas agências e aprendendo cada coisa na marra.</p>
       </div>
       <div class="traj-blocks">
         <div class="traj-block">
           <div class="traj-year">2021–2024</div>
           <div class="traj-content">
-            <h3>O início sem resultado</h3>
-            <p>Entrei no mercado digital em 2021 sem networking e sem capital. Passei esses primeiros anos tentando estruturar e rodar minhas próprias ofertas, sozinho, no escuro.</p>
-            <p>Cheguei a fazer uma ou duas vendas — o suficiente pra provar que a coisa funcionava, mas não pra deslanchar. Foi um período de muita tentativa e pouco retorno, e é dele que vem boa parte da bagagem que carrego hoje.</p>
+            <h3 data-pt="O início sem resultado" data-en="The start with no results">O início sem resultado</h3>
+            <p data-pt="Entrei no mercado digital em 2021 sem networking e sem capital. Passei esses primeiros anos tentando estruturar e rodar minhas próprias ofertas, sozinho, no escuro." data-en="I entered the digital market in 2021 with no network and no capital. I spent those first years trying to structure and run my own offers, alone, in the dark.">Entrei no mercado digital em 2021 sem networking e sem capital. Passei esses primeiros anos tentando estruturar e rodar minhas próprias ofertas, sozinho, no escuro.</p>
+            <p data-pt="Cheguei a fazer uma ou duas vendas — o suficiente pra provar que a coisa funcionava, mas não pra deslanchar. Foi um período de muita tentativa e pouco retorno, e é dele que vem boa parte da bagagem que carrego hoje." data-en="I made one or two sales — enough to prove the thing worked, but not enough to take off. It was a period of a lot of trial and little return, and most of the experience I carry today comes from it.">Cheguei a fazer uma ou duas vendas — o suficiente pra provar que a coisa funcionava, mas não pra deslanchar. Foi um período de muita tentativa e pouco retorno, e é dele que vem boa parte da bagagem que carrego hoje.</p>
           </div>
         </div>
         <div class="traj-block">
-          <div class="traj-year">AGO 2024</div>
+          <div class="traj-year" data-pt="AGO 2024" data-en="AUG 2024">AGO 2024</div>
           <div class="traj-content">
-            <h3>Agência Titan</h3>
-            <p>Meu primeiro contato real com o mercado de resposta direta e nutracêuticos. Entrei como editor, mas mal cheguei e já assumi responsabilidade por bastante coisa.</p>
-            <p>Em menos de 2 meses fui promovido a head de edição. Viram a velocidade e a responsabilidade com que eu entregava as coisas e decidiram me colocar à frente da área. Fiquei na posição até março de 2025.</p>
+            <h3 data-pt="Agência Titan" data-en="Titan Agency">Agência Titan</h3>
+            <p data-pt="Meu primeiro contato real com o mercado de resposta direta e nutracêuticos. Entrei como editor, mas mal cheguei e já assumi responsabilidade por bastante coisa." data-en="My first real contact with the direct response and nutraceuticals market. I came in as an editor, but I'd barely arrived and was already taking responsibility for a lot.">Meu primeiro contato real com o mercado de resposta direta e nutracêuticos. Entrei como editor, mas mal cheguei e já assumi responsabilidade por bastante coisa.</p>
+            <p data-pt="Em menos de 2 meses fui promovido a head de edição. Viram a velocidade e a responsabilidade com que eu entregava as coisas e decidiram me colocar à frente da área. Fiquei na posição até março de 2025." data-en="In less than 2 months I was promoted to head of editing. They saw the speed and accountability with which I delivered things and decided to put me in charge of the area. I stayed in that position until March 2025.">Em menos de 2 meses fui promovido a head de edição. Viram a velocidade e a responsabilidade com que eu entregava as coisas e decidiram me colocar à frente da área. Fiquei na posição até março de 2025.</p>
           </div>
         </div>
         <div class="traj-block">
-          <div class="traj-year">MAR 2025</div>
+          <div class="traj-year" data-pt="MAR 2025" data-en="MAR 2025">MAR 2025</div>
           <div class="traj-content">
-            <h3>Editor, Copy e Head de Edição</h3>
-            <p>Entrei na última empresa onde estava acumulando as funções de editor e copy. Fui o primeiro a ocupar as duas posições na operação — que ainda estava no início. Com o crescimento da equipe, assumi também o cargo de head de edição, treinando os editores da operação.</p>
-            <p>Não tinha nenhum head de copy lá dentro, então tive que aprender e tomar decisões sozinho.</p>
+            <h3 data-pt="Editor, Copy e Head de Edição" data-en="Editor, Copywriter and Head of Editing">Editor, Copy e Head de Edição</h3>
+            <p data-pt="Entrei na última empresa onde estava acumulando as funções de editor e copy. Fui o primeiro a ocupar as duas posições na operação — que ainda estava no início. Com o crescimento da equipe, assumi também o cargo de head de edição, treinando os editores da operação." data-en="I joined the last company where I was stacking the roles of editor and copywriter. I was the first to hold both positions in the operation — which was still in its early days. As the team grew, I also took on the head of editing role, training the operation's editors.">Entrei na última empresa onde estava acumulando as funções de editor e copy. Fui o primeiro a ocupar as duas posições na operação — que ainda estava no início. Com o crescimento da equipe, assumi também o cargo de head de edição, treinando os editores da operação.</p>
+            <p data-pt="Não tinha nenhum head de copy lá dentro, então tive que aprender e tomar decisões sozinho." data-en="There was no head of copy in there, so I had to learn and make decisions on my own.">Não tinha nenhum head de copy lá dentro, então tive que aprender e tomar decisões sozinho.</p>
           </div>
         </div>
         <div class="traj-block">
-          <div class="traj-year">AGO 2025</div>
+          <div class="traj-year" data-pt="AGO 2025" data-en="AUG 2025">AGO 2025</div>
           <div class="traj-content">
-            <h3>Primeira escala real — ED</h3>
-            <p>Minha primeira escala no Meta, no nicho de ED. Meus anúncios em vídeos e imagens geraram $199.637 em receita direta, dentro de uma escala total de $628.774,91 de faturamento.</p>
+            <h3 data-pt="Primeira escala real — ED" data-en="First real scale — ED">Primeira escala real — ED</h3>
+            <p data-pt="Minha primeira escala no Meta, no nicho de ED. Meus anúncios em vídeos e imagens geraram $199.637 em receita direta, dentro de uma escala total de $628.774,91 de faturamento." data-en="My first scale on Meta, in the ED niche. My video and image ads generated $199,637 in direct revenue, within a total scale of $628,774.91 in sales.">Minha primeira escala no Meta, no nicho de ED. Meus anúncios em vídeos e imagens geraram $199.637 em receita direta, dentro de uma escala total de $628.774,91 de faturamento.</p>
           </div>
         </div>
         <div class="traj-block">
-          <div class="traj-year">FEV 2026</div>
+          <div class="traj-year" data-pt="FEV 2026" data-en="FEB 2026">FEV 2026</div>
           <div class="traj-content">
-            <h3>Escala — Diabetes</h3>
-            <p>Escalamos no Meta com diabetes — apenas com imagens. Nenhum vídeo de nenhum copy da operação encaixou. Meus anúncios fizeram $175.819 dentro de uma escala total de $414.726.</p>
+            <h3 data-pt="Escala — Diabetes" data-en="Scale — Diabetes">Escala — Diabetes</h3>
+            <p data-pt="Escalamos no Meta com diabetes — apenas com imagens. Nenhum vídeo de nenhum copy da operação encaixou. Meus anúncios fizeram $175.819 dentro de uma escala total de $414.726." data-en="We scaled on Meta with diabetes — using images only. No video from any copywriter in the operation landed. My ads made $175,819 within a total scale of $414,726.">Escalamos no Meta com diabetes — apenas com imagens. Nenhum vídeo de nenhum copy da operação encaixou. Meus anúncios fizeram $175.819 dentro de uma escala total de $414.726.</p>
           </div>
         </div>
         <div class="traj-block">
-          <div class="traj-year">MAR 2026</div>
+          <div class="traj-year" data-pt="MAR 2026" data-en="MAR 2026">MAR 2026</div>
           <div class="traj-content">
-            <h3>YouTube — ED</h3>
-            <p>Mesmo com a fonte instável no YouTube, consegui $13k no nicho de ED — um resultado pequeno no contexto, mas relevante dado o ambiente adverso.</p>
+            <h3 data-pt="YouTube — ED" data-en="YouTube — ED">YouTube — ED</h3>
+            <p data-pt="Mesmo com a fonte instável no YouTube, consegui $13k no nicho de ED — um resultado pequeno no contexto, mas relevante dado o ambiente adverso." data-en="Even with an unstable source on YouTube, I pulled $13k in the ED niche — a small result in context, but relevant given the adverse environment.">Mesmo com a fonte instável no YouTube, consegui $13k no nicho de ED — um resultado pequeno no contexto, mas relevante dado o ambiente adverso.</p>
           </div>
         </div>
       </div>
@@ -558,8 +595,8 @@
 <section id="mentorias">
   <div class="section-inner">
     <p class="section-eyebrow">02</p>
-    <h2 class="section-title">Mentorias</h2>
-    <p class="mentoria-intro">Formação contínua com nomes de referência no copywriting de resposta direta — em ordem cronológica:</p>
+    <h2 class="section-title" data-pt="Mentorias" data-en="Mentorships">Mentorias</h2>
+    <p class="mentoria-intro" data-pt="Formação contínua com nomes de referência no copywriting de resposta direta — em ordem cronológica:" data-en="Continuous training with reference names in direct response copywriting — in chronological order:">Formação contínua com nomes de referência no copywriting de resposta direta — em ordem cronológica:</p>
     <div class="mentorias-list">
       <div class="mentoria-item">
         <div class="mentoria-num">01</div>
@@ -567,23 +604,23 @@
           <div class="mentoria-name">Copy Ads 8D</div>
           <div class="mentoria-by">Filêmon</div>
         </div>
-        <div class="mentoria-tag">Primeira mentoria</div>
+        <div class="mentoria-tag" data-pt="Primeira mentoria" data-en="First mentorship">Primeira mentoria</div>
       </div>
       <div class="mentoria-item">
         <div class="mentoria-num">02</div>
         <div class="mentoria-info">
-          <div class="mentoria-name">Mentoria</div>
+          <div class="mentoria-name" data-pt="Mentoria" data-en="Mentorship">Mentoria</div>
           <div class="mentoria-by">Amanda Khayat</div>
         </div>
-        <div class="mentoria-tag">Concluída</div>
+        <div class="mentoria-tag" data-pt="Concluída" data-en="Completed">Concluída</div>
       </div>
       <div class="mentoria-item">
         <div class="mentoria-num">03</div>
         <div class="mentoria-info">
-          <div class="mentoria-name">Mentoria</div>
+          <div class="mentoria-name" data-pt="Mentoria" data-en="Mentorship">Mentoria</div>
           <div class="mentoria-by">Gabriel Covolam</div>
         </div>
-        <div class="mentoria-tag hl">Em andamento</div>
+        <div class="mentoria-tag hl" data-pt="Em andamento" data-en="In progress">Em andamento</div>
       </div>
     </div>
   </div>
@@ -593,30 +630,30 @@
 <section id="numeros">
   <div class="section-inner">
     <p class="section-eyebrow">03</p>
-    <h2 class="section-title">Números</h2>
+    <h2 class="section-title" data-pt="Números" data-en="Numbers">Números</h2>
     <div class="numbers-grid">
       <div class="number-card">
         <div class="num">$199.637</div>
-        <div class="lbl">Resultado<br>ED — Meta</div>
-        <div class="sub">Meus ads</div>
+        <div class="lbl" data-pt="Resultado&lt;br&gt;ED — Meta" data-en="Result&lt;br&gt;ED — Meta">Resultado<br>ED — Meta</div>
+        <div class="sub" data-pt="Meus ads" data-en="My ads">Meus ads</div>
       </div>
       <div class="number-card">
         <div class="num">$628.774</div>
-        <div class="lbl">Escala Total<br>ED</div>
-        <div class="sub">Agosto 2025</div>
+        <div class="lbl" data-pt="Escala Total&lt;br&gt;ED" data-en="Total Scale&lt;br&gt;ED">Escala Total<br>ED</div>
+        <div class="sub" data-pt="Agosto 2025" data-en="August 2025">Agosto 2025</div>
       </div>
       <div class="number-card">
         <div class="num">$175.819</div>
-        <div class="lbl">Resultado<br>Diabetes — Meta</div>
-        <div class="sub">Meus ads</div>
+        <div class="lbl" data-pt="Resultado&lt;br&gt;Diabetes — Meta" data-en="Result&lt;br&gt;Diabetes — Meta">Resultado<br>Diabetes — Meta</div>
+        <div class="sub" data-pt="Meus ads" data-en="My ads">Meus ads</div>
       </div>
       <div class="number-card">
         <div class="num">$414.726</div>
-        <div class="lbl">Escala Total<br>Diabetes</div>
-        <div class="sub">Fevereiro 2026</div>
+        <div class="lbl" data-pt="Escala Total&lt;br&gt;Diabetes" data-en="Total Scale&lt;br&gt;Diabetes">Escala Total<br>Diabetes</div>
+        <div class="sub" data-pt="Fevereiro 2026" data-en="February 2026">Fevereiro 2026</div>
       </div>
     </div>
-    <p class="numbers-note">Escala de ED — agosto/2025 (vídeos + imagens) · Escala de Diabetes — fevereiro/2026 (apenas imagens) · YouTube ED — março/2026: $13.000</p>
+    <p class="numbers-note" data-pt="Escala de ED — agosto/2025 (vídeos + imagens) · Escala de Diabetes — fevereiro/2026 (apenas imagens) · YouTube ED — março/2026: $13.000" data-en="ED scale — August 2025 (videos + images) · Diabetes scale — February 2026 (images only) · YouTube ED — March 2026: $13,000">Escala de ED — agosto/2025 (vídeos + imagens) · Escala de Diabetes — fevereiro/2026 (apenas imagens) · YouTube ED — março/2026: $13.000</p>
   </div>
 </section>
 
@@ -624,8 +661,8 @@
 <section id="entregas">
   <div class="section-inner">
     <p class="section-eyebrow">04</p>
-    <h2 class="section-title">Formatos &amp;<br>Entregas</h2>
-    <p class="entregas-text">Nesse tempo que fiquei na empresa eu foquei mais em ads em vídeos e imagens. Mas sempre planejei escrever todos os tipos de copy — principalmente VSL, que é algo que quero dominar e estou aprendendo junto nesse processo.</p>
+    <h2 class="section-title" data-pt="Formatos &amp;&lt;br&gt;Entregas" data-en="Formats &amp;&lt;br&gt;Deliverables">Formatos &amp;<br>Entregas</h2>
+    <p class="entregas-text" data-pt="Nesse tempo que fiquei na empresa eu foquei mais em ads em vídeos e imagens. Mas sempre planejei escrever todos os tipos de copy — principalmente VSL, que é algo que quero dominar e estou aprendendo junto nesse processo." data-en="During my time at the company I focused mostly on video and image ads. But I always planned to write every type of copy — especially VSL, which is something I want to master and am learning along the way in this process.">Nesse tempo que fiquei na empresa eu foquei mais em ads em vídeos e imagens. Mas sempre planejei escrever todos os tipos de copy — principalmente VSL, que é algo que quero dominar e estou aprendendo junto nesse processo.</p>
   </div>
 </section>
 
@@ -633,35 +670,35 @@
 <section id="processo">
   <div class="section-inner">
     <p class="section-eyebrow">05</p>
-    <h2 class="section-title">Processo</h2>
-    <p class="processo-intro">Antes de escrever uma linha, eu pesquiso. Cada anúncio nasce de uma pesquisa estruturada de avatar — 7 camadas que descem do desejo de superfície até a cena exata em que o leitor se reconhece. Só depois disso o ad sai do papel.</p>
+    <h2 class="section-title" data-pt="Processo" data-en="Process">Processo</h2>
+    <p class="processo-intro" data-pt="Antes de escrever uma linha, eu pesquiso. Cada anúncio nasce de uma pesquisa estruturada de avatar — 7 camadas que descem do desejo de superfície até a cena exata em que o leitor se reconhece. Só depois disso o ad sai do papel." data-en="Before I write a single line, I research. Every ad is born from a structured avatar research — 7 layers that go from the surface desire down to the exact scene where the reader recognizes themselves. Only then does the ad come to life.">Antes de escrever uma linha, eu pesquiso. Cada anúncio nasce de uma pesquisa estruturada de avatar — 7 camadas que descem do desejo de superfície até a cena exata em que o leitor se reconhece. Só depois disso o ad sai do papel.</p>
     <div class="processo-grid">
 
       <div class="processo-card">
-        <div class="processo-step">Etapa 01</div>
-        <h3>Pesquisa de Avatar</h3>
-        <p>Doc inicial de imersão no nicho. Mapeia camadas básicas do público — desejos, dores, contexto e linguagem — usando reviews, Reddit e fóruns como matéria-prima.</p>
-        <a class="processo-link" href="https://docs.google.com/document/d/1pHBA9fsfJrg22jrcE_smDY5Vfe5nvA3v7gCA0qz1WGg/edit?usp=sharing" target="_blank" rel="noopener">
+        <div class="processo-step" data-pt="Etapa 01" data-en="Step 01">Etapa 01</div>
+        <h3 data-pt="Pesquisa de Avatar" data-en="Avatar Research">Pesquisa de Avatar</h3>
+        <p data-pt="Doc inicial de imersão no nicho. Mapeia camadas básicas do público — desejos, dores, contexto e linguagem — usando reviews, Reddit e fóruns como matéria-prima." data-en="Initial immersion doc into the niche. Maps the basic layers of the audience — desires, pains, context and language — using reviews, Reddit and forums as raw material.">Doc inicial de imersão no nicho. Mapeia camadas básicas do público — desejos, dores, contexto e linguagem — usando reviews, Reddit e fóruns como matéria-prima.</p>
+        <a class="processo-link" href="https://docs.google.com/document/d/1pHBA9fsfJrg22jrcE_smDY5Vfe5nvA3v7gCA0qz1WGg/edit?usp=sharing" target="_blank" rel="noopener" data-pt='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg> Ver doc' data-en='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg> View doc'>
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>
           Ver doc
         </a>
       </div>
 
       <div class="processo-card">
-        <div class="processo-step">Etapa 02</div>
-        <h3>Manual de Avatar — 7 camadas</h3>
-        <p>Framework completo de dissecação do avatar: desejo primário, motivação, estado emocional, consciência, crenças, linguagem e o momento "isso sou eu". Cada bloco vira munição direta pro copy.</p>
-        <a class="processo-link" href="https://docs.google.com/document/d/1LpzU0yIhRu9RNOrfhAtQXfYrSnLw1vipzmn9EdHl7yk/edit?usp=sharing" target="_blank" rel="noopener">
+        <div class="processo-step" data-pt="Etapa 02" data-en="Step 02">Etapa 02</div>
+        <h3 data-pt="Manual de Avatar — 7 camadas" data-en="Avatar Manual — 7 layers">Manual de Avatar — 7 camadas</h3>
+        <p data-pt="Framework completo de dissecação do avatar: desejo primário, motivação, estado emocional, consciência, crenças, linguagem e o momento &quot;isso sou eu&quot;. Cada bloco vira munição direta pro copy." data-en="Complete framework for dissecting the avatar: primary desire, motivation, emotional state, awareness, beliefs, language and the &quot;that's me&quot; moment. Each block becomes direct ammunition for the copy.">Framework completo de dissecação do avatar: desejo primário, motivação, estado emocional, consciência, crenças, linguagem e o momento "isso sou eu". Cada bloco vira munição direta pro copy.</p>
+        <a class="processo-link" href="https://docs.google.com/document/d/1LpzU0yIhRu9RNOrfhAtQXfYrSnLw1vipzmn9EdHl7yk/edit?usp=sharing" target="_blank" rel="noopener" data-pt='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg> Ver doc' data-en='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg> View doc'>
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>
           Ver doc
         </a>
       </div>
 
       <div class="processo-card">
-        <div class="processo-step">Etapa 03</div>
-        <h3>Produção do Anúncio</h3>
-        <p>Card de criação por demanda: ângulo, formato, avatar, referência visual, hooks testáveis e body completo. É onde toda a pesquisa vira o anúncio final pronto pra rodar.</p>
-        <a class="processo-link" href="https://docs.google.com/document/d/1pgIEgysneZm04nZaH7nLkWjaeh4-Z8p_XJpIZpjv9fc/edit?usp=sharing" target="_blank" rel="noopener">
+        <div class="processo-step" data-pt="Etapa 03" data-en="Step 03">Etapa 03</div>
+        <h3 data-pt="Produção do Anúncio" data-en="Ad Production">Produção do Anúncio</h3>
+        <p data-pt="Card de criação por demanda: ângulo, formato, avatar, referência visual, hooks testáveis e body completo. É onde toda a pesquisa vira o anúncio final pronto pra rodar." data-en="On-demand creation card: angle, format, avatar, visual reference, testable hooks and complete body. This is where all the research becomes the final ad, ready to run.">Card de criação por demanda: ângulo, formato, avatar, referência visual, hooks testáveis e body completo. É onde toda a pesquisa vira o anúncio final pronto pra rodar.</p>
+        <a class="processo-link" href="https://docs.google.com/document/d/1pgIEgysneZm04nZaH7nLkWjaeh4-Z8p_XJpIZpjv9fc/edit?usp=sharing" target="_blank" rel="noopener" data-pt='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg> Ver doc' data-en='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg> View doc'>
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>
           Ver doc
         </a>
@@ -675,32 +712,32 @@
 <section id="nichos">
   <div class="section-inner">
     <p class="section-eyebrow">06</p>
-    <h2 class="section-title">Mercados de<br>Atuação</h2>
-    <p class="nicho-intro">Todos os nichos em que rodei foram no mercado americano (USA). Em ordem decrescente de volume e resultado:</p>
+    <h2 class="section-title" data-pt="Mercados de&lt;br&gt;Atuação" data-en="Markets&lt;br&gt;I work in">Mercados de<br>Atuação</h2>
+    <p class="nicho-intro" data-pt="Todos os nichos em que rodei foram no mercado americano (USA). Em ordem decrescente de volume e resultado:" data-en="Every niche I've run was in the American market (USA). In descending order of volume and results:">Todos os nichos em que rodei foram no mercado americano (USA). Em ordem decrescente de volume e resultado:</p>
     <div class="nichos-list">
       <div class="nicho-item">
         <div class="nicho-num">01</div>
         <div class="nicho-name">ED</div>
-        <div class="nicho-desc">Meu nicho principal e onde obtive a maior escala. Anúncios em vídeo e imagem, com copy emocional e mecanismo único forte.</div>
-        <div class="nicho-tag hl">Maior resultado</div>
+        <div class="nicho-desc" data-pt="Meu nicho principal e onde obtive a maior escala. Anúncios em vídeo e imagem, com copy emocional e mecanismo único forte." data-en="My main niche and where I achieved the biggest scale. Video and image ads, with emotional copy and a strong unique mechanism.">Meu nicho principal e onde obtive a maior escala. Anúncios em vídeo e imagem, com copy emocional e mecanismo único forte.</div>
+        <div class="nicho-tag hl" data-pt="Maior resultado" data-en="Biggest result">Maior resultado</div>
       </div>
       <div class="nicho-item">
         <div class="nicho-num">02</div>
         <div class="nicho-name">Diabetes</div>
-        <div class="nicho-desc">Segunda maior escala. Rodou inteiramente com imagens — nenhum vídeo encaixou nessa operação, de nenhum copy da equipe.</div>
-        <div class="nicho-tag hl">Apenas imagens</div>
+        <div class="nicho-desc" data-pt="Segunda maior escala. Rodou inteiramente com imagens — nenhum vídeo encaixou nessa operação, de nenhum copy da equipe." data-en="Second biggest scale. Ran entirely on images — no video landed in this operation, from any copywriter on the team.">Segunda maior escala. Rodou inteiramente com imagens — nenhum vídeo encaixou nessa operação, de nenhum copy da equipe.</div>
+        <div class="nicho-tag hl" data-pt="Apenas imagens" data-en="Images only">Apenas imagens</div>
       </div>
       <div class="nicho-item">
         <div class="nicho-num">03</div>
-        <div class="nicho-name">Emagrecimento</div>
-        <div class="nicho-desc">Nicho com alto volume de anúncios e competição acirrada. Boa base de pesquisa e modelagem de concorrentes.</div>
-        <div class="nicho-tag">Alta competição</div>
+        <div class="nicho-name" data-pt="Emagrecimento" data-en="Weight Loss">Emagrecimento</div>
+        <div class="nicho-desc" data-pt="Nicho com alto volume de anúncios e competição acirrada. Boa base de pesquisa e modelagem de concorrentes." data-en="A niche with a high volume of ads and fierce competition. Solid research base and competitor modeling.">Nicho com alto volume de anúncios e competição acirrada. Boa base de pesquisa e modelagem de concorrentes.</div>
+        <div class="nicho-tag" data-pt="Alta competição" data-en="High competition">Alta competição</div>
       </div>
       <div class="nicho-item">
         <div class="nicho-num">04</div>
-        <div class="nicho-name">Memória</div>
-        <div class="nicho-desc">Nunca escalamos nada. Testamos ângulos e ofertas diferentes, mas não conseguimos encaixar nenhuma combinação que funcionasse.</div>
-        <div class="nicho-tag">Sem escala</div>
+        <div class="nicho-name" data-pt="Memória" data-en="Memory">Memória</div>
+        <div class="nicho-desc" data-pt="Nunca escalamos nada. Testamos ângulos e ofertas diferentes, mas não conseguimos encaixar nenhuma combinação que funcionasse." data-en="We never scaled anything. We tested different angles and offers, but couldn't land any combination that worked.">Nunca escalamos nada. Testamos ângulos e ofertas diferentes, mas não conseguimos encaixar nenhuma combinação que funcionasse.</div>
+        <div class="nicho-tag" data-pt="Sem escala" data-en="No scale">Sem escala</div>
       </div>
     </div>
   </div>
@@ -712,14 +749,14 @@
     <div class="contact-grid">
       <div class="contact-left">
         <p class="section-eyebrow">07</p>
-        <h2 class="section-title">Contato</h2>
-        <p>Se você tem uma oferta que precisa de copy que converte no mercado americano, estou disponível para conversar.</p>
+        <h2 class="section-title" data-pt="Contato" data-en="Contact">Contato</h2>
+        <p data-pt="Se você tem uma oferta que precisa de copy que converte no mercado americano, estou disponível para conversar." data-en="If you have an offer that needs copy that converts in the American market, I'm available to talk.">Se você tem uma oferta que precisa de copy que converte no mercado americano, estou disponível para conversar.</p>
       </div>
       <div>
         <div class="contact-links">
-          <a class="contact-item" href="mailto:freitasbusiness6@gmail.com">
-            <span class="contact-item-label">E-mail</span>
-            <span class="contact-item-value">freitasbusiness6@gmail.com</span>
+          <a class="contact-item" href="/cdn-cgi/l/email-protection#d3b5a1b6baa7b2a0b1a6a0babdb6a0a0e593b4beb2babffdb0bcbe">
+            <span class="contact-item-label" data-pt="E-mail" data-en="Email">E-mail</span>
+            <span class="contact-item-value"><span class="__cf_email__" data-cfemail="deb8acbbb7aabfadbcabadb7b0bbadade89eb9b3bfb7b2f0bdb1b3">[email&#160;protected]</span></span>
           </a>
           <a class="contact-item" href="https://wa.me/5512997879386">
             <span class="contact-item-label">WhatsApp</span>
@@ -736,10 +773,41 @@
 </section>
 
 <footer>
-  <p>Gabriel Freitas — Copywriter DR</p>
-  <p>Mercado Americano · 2026</p>
+  <p data-pt="Gabriel Freitas — Copywriter DR" data-en="Gabriel Freitas — Direct Response Copywriter">Gabriel Freitas — Copywriter DR</p>
+  <p data-pt="Mercado Americano · 2026" data-en="American Market · 2026">Mercado Americano · 2026</p>
 </footer>
 
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* ============================================================
+   Seletor de idioma PT / EN
+   ============================================================ */
+(function () {
+  const toggle = document.getElementById('langToggle');
+  const buttons = toggle.querySelectorAll('button');
+  const i18nEls = document.querySelectorAll('[data-pt][data-en]');
+
+  function applyLang(lang) {
+    document.documentElement.lang = (lang === 'en') ? 'en' : 'pt-BR';
+    i18nEls.forEach(el => {
+      const val = el.dataset[lang];
+      if (val == null) return;
+      // mantém elementos-filhos (ex.: SVG) quando o texto traz HTML
+      el.innerHTML = val;
+    });
+    toggle.classList.toggle('en', lang === 'en');
+    buttons.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+    try { localStorage.setItem('gf-lang', lang); } catch (e) {}
+  }
+
+  buttons.forEach(b => {
+    b.addEventListener('click', () => applyLang(b.dataset.lang));
+  });
+
+  let saved = 'pt';
+  try { saved = localStorage.getItem('gf-lang') || 'pt'; } catch (e) {}
+  applyLang(saved);
+})();
+</script>
 <script>
 /* ============================================================
    Starfield — campo de estrelas interativo com gravidade
